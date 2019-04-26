@@ -16,11 +16,12 @@
 
 (defn- do-copy-deps! [deps destination]
   (doseq [dep (keys (aether/resolve-dependencies :coordinates deps))]
-    (let [{:keys [artifact extension file]} dep
-          dst-file (io/file destination (str artifact "." (or extension "jar")))]
-      (lein/info "Copying" (.getPath file) "to" (.getPath dst-file))
-      (io/make-parents dst-file)
-      (io/copy file dst-file))))
+      (let [{:keys [artifact extension file]} (parse-dependency dep)
+            dst-file (io/file destination (str artifact "." (or extension "jar")))]
+        (when file
+          (lein/info "Copying" (.getPath file) "to" (.getPath dst-file))
+          (io/make-parents dst-file)
+          (io/copy file dst-file)))))
 
 
 (def ^{:private true} misses? (complement contains?))
