@@ -51,7 +51,7 @@ A full example using Java agents can be found in
 
 ## Change log
 
-### v0.5.0 - 2019-04-25
+### v0.6.0 - 2019-04-25
 - Forked from https://github.com/pupeno/jar-copier
 - Renamed `jar-copier` to `copy-deps`
 - Preserve dependency extension when present instead of always using `.jar`.
