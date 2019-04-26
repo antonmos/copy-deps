@@ -1,6 +1,6 @@
 ;;;; Copyright © 2015-2017 José Pablo Fernández Silva
 
-(defproject biiwide/copy-deps "0.6.0"
+(defproject biiwide/copy-deps "0.7.0-SNAPSHOT"
 
   :description "Copy files from your dependencies into your resources."
 
