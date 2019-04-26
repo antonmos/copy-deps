@@ -1,11 +1,17 @@
 ;;;; Copyright © 2015-2017 José Pablo Fernández Silva
 
-(defproject com.pupeno/jar-copier "0.4.0"
-  :description "Copy a jar from your dependencies into your resources."
-  :url "https://github.com/pupeno/jar-copier"
+(defproject biiwide/copy-deps "0.5.0-SNAPSHOT"
+
+  :description "Copy files from your dependencies into your resources."
+
+  :url "https://github.com/biiwide/jar-copier"
+
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
+
   :lein-release {:deploy-via :clojars}
+
   :scm {:name "git"
-        :url  "https://github.com/pupeno/jar-copier"}
+        :url  "https://github.com/biiwide/jar-copier"}
+
   :eval-in-leiningen true)

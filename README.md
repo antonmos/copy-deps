@@ -1,35 +1,35 @@
-# jar-copier
+# copy-deps
 
-[![Code at GitHub](https://img.shields.io/badge/code-github-green.svg)](https://github.com/pupeno/jar-copier)
-[![Clojars](https://img.shields.io/clojars/v/com.pupeno/jar-copier.svg)](https://clojars.org/com.pupeno/jar-copier)
-[![Build Status](https://travis-ci.org/pupeno/jar-copier.svg?branch=master)](https://travis-ci.org/pupeno/jar-copier)
+[![Code at GitHub](https://img.shields.io/badge/code-github-green.svg)](https://github.com/biiwide/copy-deps)
+[![Clojars](https://img.shields.io/clojars/v/biiwide/copy-deps.svg)](https://clojars.org/biiwide/copy-deps)
 
-[jar-copier](https://github.com/pupeno/jar-copier) is a Leiningen plugin to copy a jar from your dependencies into your
-resources. This is necessary in the case of Java agents for example, which have to be present as jars outside the uberjar.
+[copy-deps](https://github.com/biiwide/copy-deps) is a Leiningen plugin to copy dependencies into your project's
+resources. This is necessary in the case of Java agents for example, which have to be present as jars outside the uberjar,
+or native library dependencies.
 
 ## Usage
 
 In your `project.clj`, in the `:plugins` section, add:
 
-[![Clojars Project](http://clojars.org/com.pupeno/jar-copier/latest-version.svg)](http://clojars.org/com.pupeno/jar-copier)
+[![Clojars Project](http://clojars.org/biiwide/copy-deps/latest-version.svg)](http://clojars.org/biiwide/copy-deps)
 
 To run this plug in, execute:
 
-    $ lein jar-copier
+    $ lein copy-deps
 
 If you want the task to run automatically, which is recommended, add:
 
-    :prep-tasks ["javac" "compile" "jar-copier"]
+    :prep-tasks ["javac" "compile" "copy-deps"]
 
 and it'll be invoked every time you build your uberjar. The essential plug-in configuration goes into your `project.clj`
 and looks like this:
 
-    :jar-copier {:destination "resources/jars"}
+    :copy-deps {:destination "resources/jars"}
 
 `:destination` specifies where to copy the jars. You can then specify the jars you want to copy in this fashion:
 
-    :jar-copier {:jars        [[org.clojure/clojure "1.7.0"]]
-                 :destination "resources/jars"}
+    :copy-deps {:dependencies [[org.clojure/clojure "1.7.0"]]
+                :destination  "resources/jars"}
 
 or, if you have `:java-agents` in your project, there's a shortcut to just copy them:
 
@@ -46,10 +46,15 @@ A full example using Java agents can be found in
       :plugins [[jar-copier "0.1.0"]]
       :prep-tasks ["javac" "compile" "jar-copier"]
       :java-agents [[com.newrelic.agent.java/newrelic-agent "3.20.0"]]
-      :jar-copier {:java-agents true
-                   :destination "resources/jars"})
+      :copy-deps {:java-agents true
+                  :destination "resources/jars"})
 
 ## Change log
+
+### v0.5.0 - 2019-04-25
+- Forked from https://github.com/pupeno/jar-copier
+- Renamed `jar-copier` to `copy-deps`
+- Preserve dependency extension when present instead of always using `.jar`.
 
 ### v0.4.0 - 2017-01-28
 - Changed the groupId to com.pupeno.
