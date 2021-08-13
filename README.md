@@ -33,8 +33,8 @@ and looks like this:
 
 or, if you have `:java-agents` in your project, there's a shortcut to just copy them:
 
-    :jar-copier {:java-agents true
-                 :destination "resources/jars"}
+    :copy-deps {:java-agents true
+                :destination "resources/jars"}
 
 They can both be mixed if desired.
 
